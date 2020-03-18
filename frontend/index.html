@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/geodata/region/usa/miLow.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+
+    <title>Michigan COVID-19 County by County Map</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+      <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <main role="main" class="container-fluid">
+
+      <div>
+        <h2>Michigan COVID-19 County by County Map</h2>
+        <p>Hover over county for total number of cases, click on county for county-specific daily cases.  On phones, best viewed in landscape.</p>
+      </div>
+      <div class="row">
+        <div class="col-sm" id="mapdiv"></div>
+        <div class="col-sm">
+          <h5 class="text-center">Daily Reported Cases: <span id="scope"></span></h5>
+          <div id="chartdiv"></div>
+          <div class="col text-center">
+            <button id="statewide" type="button" class="btn btn-secondary btn-sm" onclick="stateView()">Return to State-wide view</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <p>Source: <a target="_blank" href="https://www.michigan.gov/coronavirus">https://www.michigan.gov/coronavirus</a></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <p>Last Update: <span id="update"></span></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <p>Built by Michigan citizen <a target="_blank" href="https://twitter.com/nerdguru">@nerdguru</a>.  Questions?  Ping me on Twitter</p>
+        </div>
+      </div>
+
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+      var casesData;
+    </script>
+    <script src="./data.js"></script>
+    <script src="./config.js"></script>
+  </body>
+</html>
