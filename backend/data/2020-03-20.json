@@ -1,0 +1,27 @@
+{
+ "date": "2020-03-21",
+ "data": {
+  "Bay": 1,
+  "Charlevoix": 1,
+  "Clinton": 1,
+  "Eaton": 2,
+  "Genesee": 1,
+  "Ingham": 7,
+  "Jackson": 1,
+  "Kent": 12,
+  "Leelanau": 1,
+  "Livingston": 3,
+  "Macomb": 86,
+  "Midland": 3,
+  "Monroe": 3,
+  "Montcalm": 1,
+  "Oakland": 184,
+  "Otsego": 1,
+  "Ottawa": 1,
+  "St. Clair": 7,
+  "Washtenaw": 16,
+  "Wayne": 216,
+  "Out of State": 1,
+  "Total": 549
+ }
+}
