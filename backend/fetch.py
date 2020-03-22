@@ -46,7 +46,7 @@ for row in overall_table_rows:
     county = col[0].get_text().strip()
     # Skip special cases
     if (county != 'County') and (county != 'Not Reported'):
-        cases = int(col[1].get_text())
+        cases = int(col[1].get_text().strip().replace(",",""))
         raw_deaths_text = col[2].get_text().strip()
         if (raw_deaths_text != ''):
             deaths = int(col[2].get_text())
