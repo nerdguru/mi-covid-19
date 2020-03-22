@@ -23,4 +23,4 @@ The `backend` consists of a set of Python scripts that screen scrape the cumulat
 
 In order to convert this so that it is useful for another location, the details of the screen scraping will need to be changed to suit the specifics of how data is reported for another location.
 
-Next steps for the `backend` include taking the different daily data files and automate the production of a new `data.js` file that can then be uploaded to the hosting bucket.  Eventually, this entire process could be automated to be triggered off a cron job, but it's early still and there are still several manual steps for now.
+`assemble.py` takes the list of `.json` files in the `data` folder and writes a new version of the JSON for `data.js`, which then needs to be input manually for now.
