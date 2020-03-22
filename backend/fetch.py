@@ -33,26 +33,41 @@ overall_table = soup.findAll("table")[0]
 
 # Iterate through the rows in that table
 overall_table_rows = overall_table.findAll("tr")
-detroit = 0
+detroit_cases = 0
+detroit_deaths = 0
 
 now = datetime.datetime.now()
 day_dict = {}
 day_dict['date'] = str(now).split(' ')[0]
-data_dict = {}
+cases_dict = {}
+deaths_dict = {}
 for row in overall_table_rows:
     col = row.findAll("td")
     county = col[0].get_text().strip()
     # Skip special cases
     if (county != 'County') and (county != 'Not Reported'):
         cases = int(col[1].get_text())
+        raw_deaths_text = col[2].get_text().strip()
+        if (raw_deaths_text != ''):
+            deaths = int(col[2].get_text())
+        else:
+            deaths = 0;
         # Handle the fact that Detroit is counted separate from the rest of Wayne county
         if 'Detroit' in county :
-            detroit = cases
+            detroit_cases = cases
+            detroit_deaths = deaths
         elif 'Wayne' in county :
-            cases = cases + detroit
-            data_dict[county] = cases
+            cases = cases + detroit_cases
+            deaths = deaths + detroit_deaths
+            cases_dict[county] = cases
+            deaths_dict[county] = deaths
         else:
-            data_dict[county] = cases
+            cases_dict[county] = cases
+            deaths_dict[county] = deaths
 
-day_dict['data'] = data_dict
+day_dict['cases'] = cases_dict
+day_dict['deaths'] = deaths_dict
 print(json.dumps(day_dict, indent=1))
+f = open("data/" + str(now).split(' ')[0] + ".json", "w")
+f.write(json.dumps(day_dict, indent=1))
+f.close()
