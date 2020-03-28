@@ -27,7 +27,7 @@ def is_good_response(resp):
 
 
 # Get the cumulative cases page and pull out the first table
-raw_html = simple_get('https://www.michigan.gov/coronavirus/0,9753,7-406-98163-520743--,00.html')
+raw_html = simple_get('https://www.michigan.gov/coronavirus/0,9753,7-406-98163_98173---,00.html')
 soup = BeautifulSoup(raw_html, 'html.parser')
 overall_table = soup.findAll("table")[0]
 

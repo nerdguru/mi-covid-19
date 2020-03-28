@@ -137,6 +137,9 @@ var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 categoryAxis.dataFields.category = 'date';
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.renderer.minGridDistance = 30;
+categoryAxis.renderer.labels.template.rotation = 90;
+categoryAxis.renderer.labels.template.horizontalCenter = 'center';
+categoryAxis.renderer.labels.template.verticalCenter = 'middle';
 // categoryAxis.renderer.labels.template.disabled = true;
 
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
