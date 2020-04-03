@@ -43,27 +43,31 @@ cases_dict = {}
 deaths_dict = {}
 for row in overall_table_rows:
     col = row.findAll("td")
-    county = col[0].get_text().strip()
-    # Skip special cases
-    if (county != 'County') and (county != 'Not Reported'):
-        cases = int(col[1].get_text().strip().replace(",",""))
-        raw_deaths_text = col[2].get_text().strip()
-        if (raw_deaths_text != ''):
-            deaths = int(col[2].get_text())
-        else:
-            deaths = 0;
-        # Handle the fact that Detroit is counted separate from the rest of Wayne county
-        if 'Detroit' in county :
-            detroit_cases = cases
-            detroit_deaths = deaths
-        elif 'Wayne' in county :
-            cases = cases + detroit_cases
-            deaths = deaths + detroit_deaths
-            cases_dict[county] = cases
-            deaths_dict[county] = deaths
-        else:
-            cases_dict[county] = cases
-            deaths_dict[county] = deaths
+    if (col != []):
+        county = col[0].get_text().strip()
+        # Skip special cases
+        if (county != 'County') and (county != 'Not Reported'):
+            cases = int(col[1].get_text().strip().replace(",",""))
+            raw_deaths_text = col[2].get_text().strip()
+            if (raw_deaths_text != ''):
+                deaths = int(col[2].get_text())
+            else:
+                deaths = 0;
+            # Handle the fact that Detroit is counted separate from the rest of Wayne county
+            if 'Detroit' in county :
+                detroit_cases = cases
+                detroit_deaths = deaths
+            elif 'Wayne' in county :
+                cases = cases + detroit_cases
+                deaths = deaths + detroit_deaths
+                cases_dict[county] = cases
+                deaths_dict[county] = deaths
+            elif 'Total' in county :
+                cases_dict['Total'] = cases
+                deaths_dict['Total'] = deaths
+            else:
+                cases_dict[county] = cases
+                deaths_dict[county] = deaths
 
 day_dict['cases'] = cases_dict
 day_dict['deaths'] = deaths_dict

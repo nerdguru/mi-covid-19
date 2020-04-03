@@ -27,7 +27,7 @@ javascript_output["Updated"]  = now_parts[0] + ':' + now_parts[1]
 state_data = {}
 state_data["series"] = {}
 last_date = ''
-for day in master_data:
+for day in sorted(master_data):
     state_data["series"][day] = master_data[day]["cases"]["Total"]
     last_date = day
 javascript_output["StateData"] = state_data
@@ -42,10 +42,10 @@ for county in master_data[last_date]["cases"]:
         county_data[county] = {"series": {}}
 
 # Now populate the county list
-for day in master_data:
+for day in sorted(master_data):
     for county in county_data:
         if county in master_data[day]["cases"]:
             county_data[county]["series"][day] = master_data[day]["cases"][county]
 javascript_output["CountyData"] = county_data
 
-print(json.dumps(javascript_output, indent=1))
+print(json.dumps(javascript_output, indent=1, sort_keys=True))
