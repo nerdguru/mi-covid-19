@@ -49,3 +49,7 @@ for day in sorted(master_data):
 javascript_output["CountyData"] = county_data
 
 print(json.dumps(javascript_output, indent=1, sort_keys=True))
+
+f = open("../frontend/data.js", "w")
+f.write('casesData =  ' + json.dumps(javascript_output, indent=1, sort_keys=True))
+f.close()
